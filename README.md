@@ -9,3 +9,4 @@ There is also a file, called `install.sh`, that removes the previous ones and cr
 ## PS1
 
 To set the PS1 colors, you have to set two environment variables, `PS1_FG` and `PS1_BG`, containing the escape sequence for the colors, otherwise it will be all white.
+For this, and other custom options, set them in a file called `.bashrc.local`.

@@ -15,6 +15,9 @@ call plug#end()
 " Startup page
 let g:startify_fortune_use_unicode = 1
 let g:startify_lists = [{'type': 'files'}]
+
+" Things
+set wrap!
 set number
 
 " Color Scheme
