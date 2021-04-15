@@ -1,14 +1,30 @@
 #!/bin/bash
 
-DIR=`dirname $(readlink -f "$0")`
 
-# Removes the old files
-rm ~/.bashrc ~/.bash_aliases ~/.vimrc
+# Moves to the dotenv files' folder
+cd `dirname $(readlink -f "$0")`/dotfiles
 
-# Create symlinks for the new ones
-ln -s $DIR/bashrc ~/.bashrc
-ln -s $DIR/bash_aliases ~/.bash_aliases
-ln -s $DIR/vimrc ~/.vimrc
+# For each file in that directory
+for node in `find .`; do
+    # Calculates the path of the symlink
+    target=`echo $node | sed 's/./~/'`
+    target=`eval echo $target`
 
-# Applies changes
-source ~/.bashrc
+    # Picks the absolute path
+    node=`readlink -f "$node"`
+
+    if [ -d $node ]; then
+        # If the node is a directory makes sures it exists
+        if [ ! -d $target ]; then
+            mkdir $target
+            echo "Created $target"
+        fi
+    else
+        # If it's a file creates the symlink
+        rm -f $target
+        ln -s $node $target
+        echo "Created symlink to `basename $node`"
+    fi
+done
+
+echo "Done"

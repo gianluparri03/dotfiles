@@ -11,10 +11,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-
 " Startup page
 let g:startify_fortune_use_unicode = 1
-let g:startify_lists = [{'type': 'files'}]
+let g:startify_lists = [{'type': 'files', 'header': ['   Recent files']}]
 
 " Things
 set wrap!
@@ -32,13 +31,14 @@ set noshowmode
 set laststatus=2
 
 " Indentations
-let g:indentLine_char = '¦'
-filetype plugin indent off
-let g:indentLine_fileTypeExclude = ['startify']
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" Indentations signs
+let g:indentLine_char = '¦'
+filetype plugin indent off
+let g:indentLine_fileTypeExclude = ['startify']
 
 " Templates
 autocmd BufNewFile *.c    0r ~/.vim/templates/template.c
@@ -47,7 +47,6 @@ autocmd BufNewFile *.go   0r ~/.vim/templates/template.go
 autocmd BufNewFile *.html 0r ~/.vim/templates/template.html
 
 " Mappings
-nnoremap #2 :TagbarOpen
 nnoremap #3 :NERDTree
 nnoremap #4 :vert term
 nnoremap #6 :echo "Cannot run file"
