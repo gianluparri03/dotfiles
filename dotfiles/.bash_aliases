@@ -8,9 +8,8 @@ alias lal="ls -la"
 alias cp="cp -i"
 alias mv="mv -i"
 
-# python (3.8 as default)
-alias py="python3.8"
-alias python3="python3.8"
+# python (3 as default)
+alias py="python3"
 
 # tree (colored)
 alias tree="tree -C"

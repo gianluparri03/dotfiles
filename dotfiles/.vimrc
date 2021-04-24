@@ -1,6 +1,6 @@
 " ---------- Plugins ------------
 call plug#begin()
-Plug 'sainnhe/sonokai'
+Plug 'morhetz/gruvbox'
 
 Plug 'itchyny/lightline.vim'
 Plug 'mhinz/vim-startify'
@@ -11,13 +11,16 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
+
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 
 " ---------- Configs ------------
 " Color scheme and other things
 set wrap! number termguicolors
-colorscheme sonokai
+set background=dark
+colorscheme gruvbox
 
 " Startup page
 let g:startify_fortune_use_unicode = 1
@@ -27,7 +30,7 @@ let g:startify_lists = [{'type': 'files'}]
 " Status bar
 set laststatus=2 noshowmode
 let g:lightline = {
-\   'colorscheme': 'sonokai',
+\   'colorscheme': 'gruvbox',
 \   'active': {
 \       'left': [['mode'], ['gitbranch', 'readonly', 'filename', 'modified']],
 \       'right': [['lineinfo'], ['fileformat', 'fileencoding', 'filetype']]
@@ -38,22 +41,17 @@ let g:lightline = {
 " Indentations
 set tabstop=4 shiftwidth=4 expandtab
 filetype plugin indent off
-let g:indentLine_char = '¦'
+let g:indentLine_char = '|'
 let g:indentLine_fileTypeExclude = ['startify']
 
 
 " ---------- Mappings -----------
 nnoremap #3 :NERDTree
-nnoremap #4 :vert term
-nnoremap #6 :Git
-autocmd filetype c nnoremap #7 :! gcc % && ./a.out; rm a.out
-autocmd filetype go nnoremap #7 :! go run %
-autocmd filetype cpp nnoremap #7 :! g++ -std=c++17 % && ./a.out; rm a.out
-autocmd filetype python nnoremap #7 :! python3 %
-autocmd filetype c nnoremap #8 :! gcc % -o %:r
-autocmd filetype go nnoremap #8 :! go build %
-autocmd filetype cpp nnoremap #8 :! g++ -std=c++17 % -o %:r
-
+autocmd filetype c nnoremap #6 :! gcc % && ./a.out; rm a.out
+autocmd filetype go nnoremap #6 :! go run %
+autocmd filetype cpp nnoremap #6 :! g++ -std=c++17 % && ./a.out; rm a.out
+autocmd filetype python nnoremap #6 :! python3 %
+nnoremap #9 :Git
 
 " ---------- Templates ----------
 autocmd BufNewFile *.c 0r ~/.vim/templates/template.c
