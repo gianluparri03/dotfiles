@@ -47,6 +47,7 @@ let g:indentLine_fileTypeExclude = ['startify']
 
 " ---------- Mappings -----------
 nnoremap #3 :NERDTree
+nnoremap #4 :Startify
 autocmd filetype c nnoremap #6 :! gcc % && ./a.out; rm a.out
 autocmd filetype go nnoremap #6 :! go run %
 autocmd filetype cpp nnoremap #6 :! g++ -std=c++17 % && ./a.out; rm a.out

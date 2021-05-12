@@ -20,5 +20,8 @@ alias xc="xclip -sel clip"
 # exit (shorthand)
 alias q="exit"
 
+# batcat (shorthand)
+alias bat="batcat"
+
 # mkdir + cd = mkcd
 mkcd() { mkdir "$1"; cd "$1"; }
