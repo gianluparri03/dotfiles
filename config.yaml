@@ -1,0 +1,25 @@
+config:
+  backup: false
+  banner: false
+  create: true
+  dotpath: .
+
+dotfiles:
+  f_zshrc:
+    src: zsh/.zshrc
+    dst: ~/.zshrc
+    link: absolute
+  f_gianluparri03.zsh-theme:
+    src: zsh/.oh-my-zsh/themes/gianluparri03.zsh-theme
+    dst: ~/.oh-my-zsh/themes/gianluparri03.zsh-theme
+    link: absolute
+  f_init.vim:
+    src: nvim/.config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+
+profiles:
+  main:
+    dotfiles:
+    - f_zshrc
+    - f_gianluparri03.zsh-theme
+    - f_init.vim
