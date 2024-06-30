@@ -29,12 +29,13 @@ dotdrop() {
 }
 
 
-# Oh My Zsh
-ZSH_THEME='gianluparri03'
+# Oh My Zsh theme
+ZSH_THEME="gianluparri03"
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
-# Direnv
+# Direnv and zoxide
 if (( ${+commands[direnv]} )); then eval "$(direnv hook zsh)"; fi
+if (( ${+commands[zoxide]} )); then eval "$(zoxide init zsh)"; fi
 
 # Local customizations
 if [[ -d $HOME/.zshrc_local ]]; then source $HOME/.zshrc_local; fi
