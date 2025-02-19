@@ -17,7 +17,7 @@ lprompt() {
     green; echo -n "%n@%M "
     blue;  echo -n "%1~"
     blue;  echo -n "] "
-    reset; echo -n "$(git_prompt_info)"
+    reset; echo -n "${git_prompt_info}"
     echo -n "$ "
 }
 

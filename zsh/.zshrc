@@ -8,8 +8,6 @@ alias la='ls -ah'
 alias ll='ls -lh'
 alias lal='ls -alh'
 alias py='python3'
-alias cl="clear"
-alias ct="cat"
 
 # Aliases: One Char
 alias d="docker"
@@ -17,6 +15,9 @@ alias g="git"
 alias m="make"
 alias n="nvim"
 alias q="exit"
+
+# Alias: Custom commands
+alias search="grep -nr --exclude-dir .direnv"
 
 
 # Dotdrop shorthand
@@ -38,4 +39,4 @@ if (( ${+commands[direnv]} )); then eval "$(direnv hook zsh)"; fi
 if (( ${+commands[zoxide]} )); then eval "$(zoxide init zsh)"; fi
 
 # Local customizations
-if [[ -d $HOME/.zshrc_local ]]; then source $HOME/.zshrc_local; fi
+if [[ -f $HOME/.zshrc_local ]]; then source $HOME/.zshrc_local; fi

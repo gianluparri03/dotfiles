@@ -16,6 +16,7 @@ dotfiles:
   f_init.vim:
     src: nvim/.config/nvim/init.vim
     dst: ~/.config/nvim/init.vim
+    link: absolute
 
 profiles:
   main:

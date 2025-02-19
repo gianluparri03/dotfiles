@@ -1,38 +1,59 @@
 call plug#begin()
-    Plug 'airblade/vim-gitgutter'       " +/~/- Next to lines
-    Plug 'tpope/vim-commentary'         " `gcc` to comment out things
-    Plug 'tpope/vim-fugitive'           " git window
-    Plug 'Yggdroot/indentLine'          " | in indentations
-    Plug 'itchyny/lightline.vim'        " statusline
-    Plug 'mhinz/vim-startify'           " homepage
-    Plug 'jiangmiao/auto-pairs'         " closes brackets, quotes...
-    Plug 'preservim/nerdtree'           " file system explorer
-    Plug 'ryanoasis/vim-devicons'       " emojis!
-    Plug 'sainnhe/sonokai'              " colorscheme 
-    Plug 'ludovicchabant/vim-gutentags' " ctrl-] jumps to definition
+    " Graphics
+    Plug 'sainnhe/sonokai'
+    Plug 'itchyny/lightline.vim'
+    Plug 'mhinz/vim-startify'
+    Plug 'tpope/vim-fugitive'
+
+    " Typing
+    Plug 'tpope/vim-commentary'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'machakann/vim-sandwich'
+    Plug 'lervag/vimtex'
+   
+    " File exploring
+    Plug 'preservim/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'junegunn/fzf.vim'
+
+    " File rendering
+    Plug 'airblade/vim-gitgutter'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
-" Disable mouse and set the cursor as a blinking vertical bar
+" Color scheme
+lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+colorscheme sonokai
+syntax enable
+
+" Disables the mouse and sets the cursor as a blinking vertical bar
 set mouse=
 set guicursor=a:ver100,a:blinkon100
 
-" Disbale line wrap; then adds numbers and cursorline
-set nowrap
-set number
-set cursorline
+" Disables line wrap; then adds cursor line, line numbers and the ruler
+set nowrap cursorline
+set number relativenumber
+set colorcolumn=80
 
-" Color scheme
-colorscheme sonokai
+" Custom mappings
+nnoremap <F2> :GFiles<CR>
+nnoremap <F3> :NERDTreeToggle<CR>
+nnoremap <F4> :noh<CR>
+nnoremap <F9> :Git<CR>
+cnoremap w!! w !sudo tee %
+command! Q qall
 
-" Folding
-set foldmethod=indent
+" Sets indentations to 4 columns
+set tabstop=4 shiftwidth=4
+set foldmethod=indent foldlevelstart=99
 
 " Startify configs
 let g:startify_fortune_use_unicode = 1
 let g:startify_files_number = 7
 let g:startify_lists = [{'type': 'files'}]
 
-set noshowmode
+" Lightline
 let g:lightline = {
 \   'colorscheme': 'sonokai',
 \   'component_function': {'gitbranch': 'FugitiveHead'},
@@ -42,15 +63,5 @@ let g:lightline = {
 \    }
 \ }
 
-" Maps the tab button to 4 spaces; draw | on identations
-set tabstop=4 shiftwidth=4 expandtab
-let g:indentLine_char = '|'
-let g:indentLine_fileTypeExclude = ['startify']
-let g:vim_json_conceal=0
-
-" Mappigs & Commands
-nnoremap <F3> :NERDTreeToggle<CR>
-nnoremap <F4> :noh<CR>
-nnoremap <F9> :Git<CR>
-cnoremap w!! w !sudo tee %
-command! Q qall
+" NERDTree
+let NERDTreeIgnore = ['tags*', '.direnv']
