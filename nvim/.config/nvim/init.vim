@@ -29,11 +29,11 @@ syntax enable
 
 " Disables the mouse and sets the cursor as a blinking vertical bar
 set mouse=
-set guicursor=a:ver100,a:blinkon100
+set guicursor=a:ver100,a:blinkon50
 
 " Disables line wrap; then adds cursor line, line numbers and the ruler
 set nowrap cursorline
-set number relativenumber
+set number
 set colorcolumn=80
 
 " Custom mappings
@@ -64,4 +64,5 @@ let g:lightline = {
 \ }
 
 " NERDTree
-let NERDTreeIgnore = ['tags*', '.direnv']
+set wildignore+=*_templ.go
+let NERDTreeRespectWildIgnore=1

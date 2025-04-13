@@ -8,6 +8,7 @@ alias la='ls -ah'
 alias ll='ls -lh'
 alias lal='ls -alh'
 alias py='python3'
+alias vim='nvim'
 
 # Aliases: One Char
 alias d="docker"
@@ -18,6 +19,17 @@ alias q="exit"
 
 # Alias: Custom commands
 alias search="grep -nr --exclude-dir .direnv"
+
+# mkdir and cd
+mkcd() {
+	mkdir $1
+	cd $1
+}
+
+# create a copy
+bak() {
+	cp $1 $1.bak
+}
 
 
 # Dotdrop shorthand
